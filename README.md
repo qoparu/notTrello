@@ -7,7 +7,7 @@ The project includes a full testing cycle: unit, integration, e2e tests, 100% co
 
 ## 📌 Basic requirements (from the assignment)
 - ✔ **Java 11/17** (LTS version)  
-- ✔**JavaFX GUI** with Drag & Drop  
+- ✔ **JavaFX GUI** with Drag & Drop  
 - ✔ **Testing**: JUnit 5, Mockito, Textcontainers, Cucumber (BD)  
 - ✔ **100% code coverage** (JaCoCo + Coveralls)  
 - ✔ **Mutation Testing** (PITest)  

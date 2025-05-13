@@ -17,8 +17,8 @@ The project includes a full testing cycle: unit, integration, e2e tests, 100% co
 
 ---
 
-## 🛠 Технологии
-| Категория       | Технологии                                                                 |
+## 🛠 Charasteristics
+| Categories       | Technology                                                                 |
 |----------------|---------------------------------------------------------------------------|
 | **Language**       | Java 17                                                                   |
 | **GUI**        | JavaFX + FXML                                                            |

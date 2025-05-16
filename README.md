@@ -1,4 +1,4 @@
-# 🚀 NotTrello
+# ✏️ NotTrello
 
 [![Java](https://img.shields.io/badge/Java-17%20LTS-red?logo=openjdk)](https://www.oracle.com/java/)
 [![JavaFX](https://img.shields.io/badge/JavaFX-17%20LTS-purple?logo=javafx)](https://openjfx.io/)

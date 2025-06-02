@@ -1,17 +1,19 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+import java.util.Objects;
 
 public class Card {
-    private String id;
+    private final String id;
     private String title;
     private String description;
-    private List<String> tags;
-    private String assignee; // who assigned
-    private Priority priority; // priority of task
-    private String dueDate; // deadline
-    private List<Comment> comments; // comments to the card
-    private boolean isArchived; // Card is archived?
+    private final List<String> tags;
+    private String assignee;
+    private Priority priority;
+    private String dueDate;
+    private final List<Comment> comments;
+    private boolean isArchived;
 
     public enum Priority {
         LOW, MEDIUM, HIGH
@@ -19,10 +21,10 @@ public class Card {
 
     public Card(String title) {
         this.id = UUID.randomUUID().toString();
-        this.title = title;
+        this.title = Objects.requireNonNull(title, "Title cannot be null");
         this.tags = new ArrayList<>();
         this.comments = new ArrayList<>();
-        this.priority = Priority.MEDIUM; // middle priority by default
+        this.priority = Priority.MEDIUM;
     }
 
     // Геттеры и сеттеры
@@ -35,7 +37,7 @@ public class Card {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = Objects.requireNonNull(title, "Title cannot be null");
     }
 
     public String getDescription() {
@@ -43,16 +45,16 @@ public class Card {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description; // null allowed for description
     }
 
     public List<String> getTags() {
-        return new ArrayList<>(tags); // returning the copy to prevent unnecessary changes
+        return Collections.unmodifiableList(tags); // другой метод, чем создание новой копии
     }
 
     public void addTag(String tag) {
-        if (!tags.contains(tag)) {
-            tags.add(tag);
+        if (tag != null && !tag.trim().isEmpty() && !tags.contains(tag)) {
+            tags.add(tag.trim());
         }
     }
 
@@ -65,7 +67,7 @@ public class Card {
     }
 
     public void setAssignee(String assignee) {
-        this.assignee = assignee;
+        this.assignee = assignee; // null allowed for assignee
     }
 
     public Priority getPriority() {
@@ -73,7 +75,7 @@ public class Card {
     }
 
     public void setPriority(Priority priority) {
-        this.priority = priority;
+        this.priority = Objects.requireNonNull(priority, "Priority cannot be null");
     }
 
     public String getDueDate() {
@@ -81,15 +83,15 @@ public class Card {
     }
 
     public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
+        this.dueDate = dueDate; // null allowed for dueDate
     }
 
     public List<Comment> getComments() {
-        return new ArrayList<>(comments);
+        return Collections.unmodifiableList(comments);
     }
 
     public void addComment(Comment comment) {
-        comments.add(comment);
+        comments.add(Objects.requireNonNull(comment, "Comment cannot be null"));
     }
 
     public boolean isArchived() {
@@ -115,19 +117,17 @@ public class Card {
                 '}';
     }
 
-    // Вложенный класс для комментариев
     public static class Comment {
-        private String author;
-        private String text;
-        private String timestamp;
+        private final String author;
+        private final String text;
+        private final String timestamp;
 
         public Comment(String author, String text, String timestamp) {
-            this.author = author;
-            this.text = text;
-            this.timestamp = timestamp;
+            this.author = Objects.requireNonNull(author, "Author cannot be null");
+            this.text = Objects.requireNonNull(text, "Text cannot be null");
+            this.timestamp = Objects.requireNonNull(timestamp, "Timestamp cannot be null");
         }
 
-        // Геттеры для комментария
         public String getAuthor() {
             return author;
         }
@@ -139,5 +139,33 @@ public class Card {
         public String getTimestamp() {
             return timestamp;
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Comment comment = (Comment) o;
+            return author.equals(comment.author) &&
+                   text.equals(comment.text) &&
+                   timestamp.equals(comment.timestamp);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(author, text, timestamp);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return id.equals(card.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

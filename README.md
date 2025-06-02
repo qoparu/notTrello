@@ -9,7 +9,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 **Simplified Trello analog** with a Java GUI, developed for the Automated Software Testing exam.
+
 Made by: Aru
+
 The project includes a full testing cycle: unit, integration, e2e tests, 100% code coverage, and mutation testing.
 
 ---

@@ -45,5 +45,6 @@ The project includes a full testing cycle: unit, integration, e2e tests, 100% co
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/qoparu/notTrello.git
+   ```
    
-<div align="center"> <h3>✨ Crafted with ❤️ by <a href="https://github.com/qoparu">Aru</a> ✨</h3> <p>For the <b>Automated Software Testing</b> exam</p> <img src="https://img.shields.io/badge/Java-Expert-important?logo=java" alt="Java Expert"> </div> ```
+<div align="center"> <h3>✨ Crafted with ❤️ by <a href="https://github.com/qoparu">Aru</a> ✨</h3> <p>For the <b>Automated Software Testing</b> exam</p> <img src="https://img.shields.io/badge/Java-Expert-important?logo=java" alt="Java Expert"> </div> 
